@@ -3,26 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login System</title>
+    <title>Scuderia Login</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
+      <div class="brand">
+        <div class="badge">S</div>
+        <span>SCUDERIA</span>
+      </div>
+ 
       <h2>Login</h2>
-
+ 
       <input type="email" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Password" />
-
+ 
       <button onclick="login()">Login</button>
-
-      <p>Don't have an account?</p>
-
+ 
+      <p class="divider">Don't have an account?</p>
+ 
       <input type="text" id="name" placeholder="Name" />
-      <button onclick="register()">Register</button>
-
+      <button class="secondary" onclick="register()">Register</button>
+ 
       <p id="message"></p>
     </div>
-
+ 
     <script src="app.js"></script>
   </body>
 </html>
+ 
