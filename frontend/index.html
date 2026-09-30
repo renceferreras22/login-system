@@ -4,31 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scuderia Login</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
   </head>
-  <body class="login">
-    <div class="container">
-      <div class="brand">
-        <div class="badge">S</div>
-        <span>SCUDERIA</span>
-      </div>
- 
-      <h2>Login</h2>
- 
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Password" />
- 
-      <button onclick="login()">Login</button>
- 
-      <p class="divider">Don't have an account?</p>
- 
-      <input type="text" id="name" placeholder="Name" />
-      <button class="secondary" onclick="register()">Register</button>
- 
-      <p id="message"></p>
+  <body>
+    <div class="shell">
+      <aside class="showcase">
+        <div class="brand">
+          <div class="badge">S</div>
+          <span>SCUDERIA</span>
+        </div>
+        <div>
+          <h1>Ready<br />to <em>race?</em></h1>
+          <p>Sign in to enter the paddock and meet the drivers, the cars and the team behind them.</p>
+        </div>
+        <div class="foot">Maranello · Since 1929</div>
+      </aside>
+
+      <main class="panel">
+        <h2 id="title">Welcome back</h2>
+        <p class="sub" id="sub">Log in to continue to your dashboard.</p>
+
+        <div class="tabs">
+          <button type="button" id="tab-login" class="active" onclick="setMode('login')">Login</button>
+          <button type="button" id="tab-register" onclick="setMode('register')">Register</button>
+        </div>
+
+        <div class="field hidden" id="name-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your full name" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="wrap">
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" id="toggle-pw" onclick="togglePw()">Show</button>
+          </div>
+        </div>
+
+        <button class="submit" id="btn-login" onclick="login()">Login</button>
+        <button class="submit hidden" id="btn-register" onclick="register()">Create account</button>
+
+        <p id="message"></p>
+      </main>
     </div>
- 
+
     <script src="app.js"></script>
+    <script>
+      function setMode(mode) {
+        var reg = mode === "register";
+        document.getElementById("tab-login").classList.toggle("active", !reg);
+        document.getElementById("tab-register").classList.toggle("active", reg);
+        document.getElementById("name-field").classList.toggle("hidden", !reg);
+        document.getElementById("btn-login").classList.toggle("hidden", reg);
+        document.getElementById("btn-register").classList.toggle("hidden", !reg);
+        document.getElementById("title").textContent = reg ? "Join the team" : "Welcome back";
+        document.getElementById("sub").textContent = reg
+          ? "Create an account to get started."
+          : "Log in to continue to your dashboard.";
+        document.getElementById("message").textContent = "";
+      }
+      function togglePw() {
+        var p = document.getElementById("password"), b = document.getElementById("toggle-pw");
+        var show = p.type === "password";
+        p.type = show ? "text" : "password";
+        b.textContent = show ? "Hide" : "Show";
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          var reg = !document.getElementById("btn-register").classList.contains("hidden");
+          document.getElementById(reg ? "btn-register" : "btn-login").click();
+        }
+      });
+    </script>
   </body>
 </html>
- 
