@@ -1,35 +1,84 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container dashboard">
-      <div class="brand">
-        <div class="badge">S</div>
-        <span>SCUDERIA</span>
-      </div>
- 
-      <div class="gauge">
-        <div>Engine on<small>Session active</small></div>
-      </div>
- 
-      <h1>Welcome to the Dashboard</h1>
- 
-      <p>You have successfully logged in.</p>
- 
-      <button onclick="logout()">Logout</button>
-    </div>
- 
-    <script>
-      function logout() {
-        localStorage.removeItem("token");
-        window.location.href = "index.html";
-      }
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Scuderia Ferrari</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bust" viewBox="0 0 200 160">
+    <path d="M20 160c0-40 30-56 80-56s80 16 80 56z" fill="#dc0000"/>
+    <path d="M84 104h32v14q-16 10-32 0z" fill="#1a1a1a"/>
+    <path d="M100 118v42" stroke="#f4d03f" stroke-width="3"/>
+    <ellipse cx="100" cy="62" rx="36" ry="42" fill="#fff"/>
+    <path d="M64 60q0-40 36-40t36 40v6H64z" fill="#dc0000"/>
+    <path d="M70 56q30-10 60 0v14q-30 8-60 0z" fill="#111"/>
+    <path d="M64 60q36-12 72 0" stroke="#f4d03f" stroke-width="3" fill="none"/>
+  </symbol>
+  <symbol id="car" viewBox="0 0 320 140">
+    <path d="M14 96q0-14 20-20l52-12q40-30 90-30 44 0 62 24l48 8q20 4 20 26v10H14z" fill="#dc0000"/>
+    <path d="M100 62q34-24 76-22 30 2 44 22z" fill="#0d0d0e"/>
+    <path d="M14 106h292" stroke="#f4d03f" stroke-width="2"/>
+    <circle cx="82" cy="106" r="22" fill="#111"/><circle cx="82" cy="106" r="11" fill="#bbb"/>
+    <circle cx="246" cy="106" r="22" fill="#111"/><circle cx="246" cy="106" r="11" fill="#bbb"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="brand"><div class="badge">S</div><span>SCUDERIA FERRARI</span></div>
+  <ul><li><a href="#drivers">Drivers</a></li><li><a href="#cars">Supercars</a></li><li><a href="#team">Our Team</a></li></ul>
+  <button onclick="logout()">Logout</button>
+</nav>
+
+<header class="hero">
+  <div>
+    <small>Maranello · Since 1929</small>
+    <h1>Scuderia <em>Ferrari</em></h1>
+    <div class="rule"></div><br />
+    <p>Passion, precision and the prancing horse. Welcome back, you have successfully logged in.</p>
+    <a class="cta" href="#drivers">Enter the Paddock</a>
+  </div>
+</header>
+
+<section id="drivers">
+  <div class="head"><small>2026 Formula 1 Season</small><h2>The Drivers</h2></div>
+  <div class="drivers">
+    <div class="card"><div class="img"><span class="num">16</span><svg><use href="#bust"/></svg></div>
+      <div class="info"><span>Monaco</span><h3>Charles Leclerc</h3><p>Il Predestinato: the heart of Ferrari, leading the charge for the Tifosi.</p></div></div>
+    <div class="card"><div class="img"><span class="num">44</span><svg><use href="#bust"/></svg></div>
+      <div class="info"><span>United Kingdom</span><h3>Lewis Hamilton</h3><p>Seven-time World Champion bringing legendary experience to Maranello.</p></div></div>
+  </div>
+</section>
+
+<section id="cars">
+  <div class="head"><small>Current Range</small><h2>The Supercars</h2></div>
+  <div class="grid">
+    <div class="card"><div class="img"><svg><use href="#car"/></svg></div><div class="info"><span>Hypercar</span><h3>F80</h3><p>The flagship: twin-turbo V6 hybrid, the pinnacle of Ferrari technology.</p></div></div>
+    <div class="card"><div class="img"><svg><use href="#car"/></svg></div><div class="info"><span>Berlinetta</span><h3>296 GTB</h3><p>Plug-in hybrid V6 delivering pure, thrilling performance.</p></div></div>
+    <div class="card"><div class="img"><svg><use href="#car"/></svg></div><div class="info"><span>Grand Tourer</span><h3>12Cilindri</h3><p>A naturally aspirated V12 front-engined masterpiece.</p></div></div>
+    <div class="card"><div class="img"><svg><use href="#car"/></svg></div><div class="info"><span>Four-Door, Four-Seat</span><h3>Purosangue</h3><p>Ferrari's first four-door, V12 power with everyday versatility.</p></div></div>
+  </div>
+</section>
+
+<section id="team" class="team">
+  <div class="head"><small>Built By</small><h2>Student Members</h2></div>
+  <div class="grid">
+    <div class="card stu"><div class="av">S1</div><h3>Student Name 1</h3><p>Role / Position</p></div>
+    <div class="card stu"><div class="av">S2</div><h3>Student Name 2</h3><p>Role / Position</p></div>
+    <div class="card stu"><div class="av">S3</div><h3>Student Name 3</h3><p>Role / Position</p></div>
+    <div class="card stu"><div class="av">S4</div><h3>Student Name 4</h3><p>Role / Position</p></div>
+  </div>
+</section>
+
+<footer>© 2026 SCUDERIA FERRARI TRIBUTE · STUDENT PROJECT</footer>
+
+<script>
+function logout() {
+  try { localStorage.removeItem("token"); } catch (e) {}
+  window.location.href = "index.html";
+}
+</script>
+</body>
 </html>
- 
